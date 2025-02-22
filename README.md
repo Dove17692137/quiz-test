@@ -6,10 +6,10 @@
     <title>Quiz ze słówek</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; margin: 0; }
-        .container { max-width: 90%; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
-        .question { font-size: 1.4em; margin-bottom: 15px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; font-size: 1.2em; border: 1px solid #ccc; border-radius: 5px; }
-        button { width: 100%; padding: 12px; font-size: 1.2em; cursor: pointer; border: none; border-radius: 5px; background: #007BFF; color: white; }
+        .container { max-width: 600px; width: 80%; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .question { font-size: 1.2em; margin-bottom: 10px; }
+        input { width: 100%; padding: 8px; margin: 10px 0; font-size: 1em; }
+        button { width: 100%; padding: 10px; font-size: 1em; cursor: pointer; border: none; border-radius: 5px; background: #007BFF; color: white; }
         button:hover { background: #0056b3; }
         #summary { display: none; }
         #feedback { font-size: 1.2em; font-weight: bold; margin-top: 10px; }
@@ -60,6 +60,7 @@
             { en: "sail", pl: "pływać statkiem" }
         ];
         
+        let totalQuestions = words.length;
         let availableWords = [...words];
         let answeredQuestions = [];
         let correctAnswers = 0;
@@ -72,12 +73,14 @@
         }
         
         function loadQuestion() {
-            if (availableWords.length === 0) {
+            if (answeredQuestions.length >= totalQuestions || availableWords.length === 0) {
                 showSummary();
                 return;
             }
             
             currentQuestion = getRandomQuestion();
+            if (!currentQuestion) return;
+            
             document.getElementById("question").textContent = `Podaj angielskie tłumaczenie: ${currentQuestion.pl}`;
             document.getElementById("feedback").textContent = "";
             document.getElementById("answer").value = "";
@@ -109,7 +112,8 @@
         function showSummary() {
             document.getElementById("quiz-container").style.display = "none";
             document.getElementById("summary").style.display = "block";
-            document.getElementById("score").textContent = `Twój wynik: ${correctAnswers}/${words.length}`;
+            
+            document.getElementById("score").textContent = `Twój wynik: ${correctAnswers}/${totalQuestions}`;
             
             const list = document.getElementById("answers-list");
             list.innerHTML = "";
@@ -130,6 +134,7 @@
     </script>
 </body>
 </html>
+
 
 
 

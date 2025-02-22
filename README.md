@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -5,10 +6,10 @@
     <title>Quiz ze słówek</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .container { max-width: 90%; width: 400px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
         .question { font-size: 1.2em; margin-bottom: 10px; }
-        input { width: 60%; padding: 8px; margin: 10px 0; font-size: 1em; }
-        button { padding: 10px 20px; font-size: 1em; cursor: pointer; border: none; border-radius: 5px; background: #007BFF; color: white; }
+        input { width: 80%; padding: 10px; margin: 10px 0; font-size: 1em; }
+        button { width: 85%; padding: 12px; font-size: 1em; cursor: pointer; border: none; border-radius: 5px; background: #007BFF; color: white; }
         button:hover { background: #0056b3; }
         #summary { display: none; }
         #feedback { font-size: 1.2em; font-weight: bold; margin-top: 10px; }
@@ -132,3 +133,4 @@
     </script>
 </body>
 </html>
+

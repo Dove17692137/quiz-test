@@ -7,9 +7,9 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; margin: 0; }
         .container { max-width: 90%; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
-        .question { font-size: 1.2em; margin-bottom: 10px; }
-        input { width: calc(100% - 20px); padding: 8px; margin: 10px 0; font-size: 1em; }
-        button { padding: 10px 20px; font-size: 1em; cursor: pointer; border: none; border-radius: 5px; background: #007BFF; color: white; }
+        .question { font-size: 1.4em; margin-bottom: 15px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; font-size: 1.2em; border: 1px solid #ccc; border-radius: 5px; }
+        button { width: 100%; padding: 12px; font-size: 1.2em; cursor: pointer; border: none; border-radius: 5px; background: #007BFF; color: white; }
         button:hover { background: #0056b3; }
         #summary { display: none; }
         #feedback { font-size: 1.2em; font-weight: bold; margin-top: 10px; }
@@ -60,7 +60,6 @@
             { en: "sail", pl: "pływać statkiem" }
         ];
         
-        let totalQuestions = words.length;
         let availableWords = [...words];
         let answeredQuestions = [];
         let correctAnswers = 0;
@@ -73,14 +72,12 @@
         }
         
         function loadQuestion() {
-            if (answeredQuestions.length >= totalQuestions || availableWords.length === 0) {
+            if (availableWords.length === 0) {
                 showSummary();
                 return;
             }
             
             currentQuestion = getRandomQuestion();
-            if (!currentQuestion) return;
-            
             document.getElementById("question").textContent = `Podaj angielskie tłumaczenie: ${currentQuestion.pl}`;
             document.getElementById("feedback").textContent = "";
             document.getElementById("answer").value = "";
@@ -112,8 +109,7 @@
         function showSummary() {
             document.getElementById("quiz-container").style.display = "none";
             document.getElementById("summary").style.display = "block";
-            
-            document.getElementById("score").textContent = `Twój wynik: ${correctAnswers}/${totalQuestions}`;
+            document.getElementById("score").textContent = `Twój wynik: ${correctAnswers}/${words.length}`;
             
             const list = document.getElementById("answers-list");
             list.innerHTML = "";
@@ -134,5 +130,6 @@
     </script>
 </body>
 </html>
+
 
 
